@@ -1,0 +1,12 @@
+services:
+  apt-cacher-ng:
+    restart: always
+    image: sameersbn/apt-cacher-ng:latest
+    init: true
+    ports:
+    - "3142:3142"
+    volumes:
+    - apt-cacher-ng:/var/cache/apt-cacher-ng
+
+volumes:
+  apt-cacher-ng:

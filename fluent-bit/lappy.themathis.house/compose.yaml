@@ -1,0 +1,12 @@
+name: fluent-bit
+services:
+    fluent-bit:
+        container_name: fluent-bit
+        user: root
+        network_mode: host
+        volumes:
+            - /etc/machine-id:/etc/machine-id:ro
+            - /run/log/systemd/journal:/run/log/journal:ro
+            - ../fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf:ro
+        image: fluent/fluent-bit:latest
+        command: /fluent-bit/bin/fluent-bit -c /fluent-bit/etc/fluent-bit.conf
